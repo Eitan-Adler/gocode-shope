@@ -1,0 +1,9 @@
+.winter-sale-lable {
+  -webkit-animation: colorchange 2s infinite alternate;
+}
+.sale-price {
+  color: red;
+}
+.sale-old-price {
+  text-decoration: line-through;
+}
