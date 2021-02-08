@@ -1,6 +1,7 @@
 import React from "react";
 import Product from "../Product/Product";
 import SaleCountDown from "../SaleCountDown/SaleCountDown";
+import PropTypes from "prop-types";
 
 class Products extends React.Component {
   state = {
@@ -34,5 +35,8 @@ class Products extends React.Component {
     );
   }
 }
-
+Products.propTypes = {
+  products: PropTypes.array,
+  filterdBy: PropTypes.string,
+};
 export default Products;

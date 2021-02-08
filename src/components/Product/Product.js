@@ -1,5 +1,6 @@
 import React from "react";
 import "./Product.css";
+import { PropTypes } from "prop-types";
 
 class Product extends React.Component {
   render() {
@@ -26,4 +27,11 @@ class Product extends React.Component {
     return ProductCard;
   }
 }
+Product.propTypes = {
+  img: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+  sale: PropTypes.bool,
+};
+
 export default Product;

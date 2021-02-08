@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class Header extends React.Component {
   state = {
@@ -51,5 +52,9 @@ class Header extends React.Component {
     );
   }
 }
+Header.propTypes = {
+  categories: PropTypes.array,
+  changeFilterdBy: PropTypes.func,
+};
 
 export default Header;

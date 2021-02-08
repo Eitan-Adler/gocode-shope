@@ -1,5 +1,6 @@
 import React from "react";
 import "./SaleCountDown.css";
+import { PropTypes } from "prop-types";
 
 class SaleCountDown extends React.Component {
   state = {
@@ -45,5 +46,8 @@ class SaleCountDown extends React.Component {
     );
   }
 }
+SaleCountDown.propTypes = {
+  endSale: PropTypes.func,
+};
 
 export default SaleCountDown;

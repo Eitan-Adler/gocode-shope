@@ -19,18 +19,14 @@ class App extends React.Component {
       .then((products) => this.setState({ products }));
   }
   render() {
+    const { products, filterdBy } = this.state;
     const app = (
       <div>
         <Header
-          categories={Object.keys(
-            this.groupBy(this.state.products, "category")
-          )}
+          categories={Object.keys(this.groupBy(products, "category"))}
           changeFilterdBy={(category) => this.setState({ filterdBy: category })}
         />
-        <Products
-          products={this.state.products}
-          filterdBy={this.state.filterdBy}
-        />
+        <Products products={products} filterdBy={filterdBy} />
       </div>
     );
     return app;
