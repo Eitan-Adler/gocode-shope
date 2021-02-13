@@ -1,51 +1,49 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./SaleCountDown.css";
 import { PropTypes } from "prop-types";
 
-class SaleCountDown extends React.Component {
-  state = {
-    sec: 63,
-  };
-  secShow = 3;
-  minShow = 1;
-  intervalId = 0;
-  countDown = () => {
-    this.setState(({ sec }) => ({ sec: sec - 1 }));
-    this.secShow = this.state.sec % 60;
-    this.minShow = Math.floor(this.state.sec / 60);
-  };
+const SaleCountDown = ({ endSale }) => {
+  const [sec, setSec] = useState(63);
 
-  tick = () =>
-    setInterval(() => {
-      this.state.sec > 0 ? this.countDown() : this.stopTick();
-    }, 1000);
-  stopTick = () => {
-    clearInterval(this.intervalId);
-    this.props.endSale();
-  };
-  componentDidMount() {
-    this.intervalId = this.tick();
-  }
-  render() {
-    return (
-      <div className=" sale-count-down">
-        {this.state.sec === 0
-          ? "winter sale on menswear has ended!!"
-          : `Just ${
-              this.minShow > 0
-                ? this.minShow === 1
-                  ? this.minShow + " minute and "
-                  : this.minShow + " minutes and "
-                : ""
-            }${
-              this.secShow === 1
-                ? this.secShow + " second"
-                : this.secShow + " seconds"
-            } left until winter sale on menswear ends`}
-      </div>
-    );
-  }
-}
+  const intervalRef = useRef();
+  const secShow = useRef();
+  const minShow = useRef();
+
+  secShow.current = sec % 60;
+  minShow.current = Math.floor(sec / 60);
+  useEffect(() => {
+    if (sec !== 0) {
+      const id = setInterval(() => {
+        setSec(sec - 1);
+      }, 1000);
+      intervalRef.current = id;
+      return () => {
+        clearInterval(intervalRef.current);
+      };
+    } else {
+      endSale();
+    }
+  }, [endSale, sec]);
+
+  return (
+    <div className=" sale-count-down">
+      {sec === 0
+        ? "winter sale on menswear has ended!!"
+        : `Just ${
+            minShow.current > 0
+              ? minShow.current === 1
+                ? minShow.current + " minute and "
+                : minShow.current + " minutes and "
+              : ""
+          }${
+            secShow.current === 1
+              ? secShow.current + " second"
+              : secShow.current + " seconds"
+          } left until winter sale on menswear ends`}
+    </div>
+  );
+};
+
 SaleCountDown.propTypes = {
   endSale: PropTypes.func,
 };

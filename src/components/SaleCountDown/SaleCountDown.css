@@ -1,7 +1,5 @@
 .sale-count-down {
-  position: absolute;
-  width: 90%;
-  max-width: 1240px;
+  flex: 100%;
   text-align: center;
   font-size: 30px;
   background-color: #d8bfd859;
