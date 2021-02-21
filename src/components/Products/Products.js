@@ -10,6 +10,7 @@ const Products = ({ products, filterdBy }) => {
     const productComp = (
       <Product
         key={id}
+        id={id}
         title={title}
         img={image}
         price={price}

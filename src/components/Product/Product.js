@@ -1,25 +1,28 @@
 import React from "react";
 import "./Product.css";
 import { PropTypes } from "prop-types";
+import { Link } from "react-router-dom";
 
-const Product = ({ img, title, price, sale }) => {
+const Product = ({ img, title, price, sale, id }) => {
   const ProductCard = (
     <div className="product-card">
-      <div className="product-image">
-        <img alt="" src={img}></img>
-      </div>
-      <div class="product-info">
-        <h5>{title}</h5>
-        {sale ? (
-          <div>
-            <h6 className="winter-sale-lable">winter sale!</h6>
-            <h6 className="sale-price">{`$${(price * 0.8).toFixed(2)}`}</h6>
-            <h6 className="sale-old-price">{`$${price.toFixed(2)}`}</h6>
-          </div>
-        ) : (
-          <h6>{`$${price.toFixed(2)}`}</h6>
-        )}
-      </div>
+      <Link to={`/products/${id}`}>
+        <div className="product-image">
+          <img alt="" src={img}></img>
+        </div>
+        <div class="product-info">
+          <h5>{title}</h5>
+          {sale ? (
+            <div>
+              <h6 className="winter-sale-lable">winter sale!</h6>
+              <h6 className="sale-price">{`$${(price * 0.8).toFixed(2)}`}</h6>
+              <h6 className="sale-old-price">{`$${price.toFixed(2)}`}</h6>
+            </div>
+          ) : (
+            <h6>{`$${price.toFixed(2)}`}</h6>
+          )}
+        </div>
+      </Link>
     </div>
   );
   return ProductCard;
