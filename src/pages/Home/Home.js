@@ -22,6 +22,7 @@ const Home = () => {
     <div>
       <Header
         categories={Object.keys(groupBy(products, "category"))}
+        prices={Object.keys(groupBy(products, "price"))}
         changeFilterdBy={(category) => setFilterBy(category)}
       />
       <Products products={products} filterdBy={filterdBy} />

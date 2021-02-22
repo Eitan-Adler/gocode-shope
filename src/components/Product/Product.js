@@ -2,11 +2,12 @@ import React from "react";
 import "./Product.css";
 import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
+import priceSet from "../PriceSet/PriceSet";
 
 const Product = ({ img, title, price, sale, id }) => {
   const ProductCard = (
     <div className="product-card">
-      <Link to={`/products/${id}`}>
+      <Link to={`/products/${id}/${sale}`}>
         <div className="product-image">
           <img alt="" src={img}></img>
         </div>
@@ -15,11 +16,11 @@ const Product = ({ img, title, price, sale, id }) => {
           {sale ? (
             <div>
               <h6 className="winter-sale-lable">winter sale!</h6>
-              <h6 className="sale-price">{`$${(price * 0.8).toFixed(2)}`}</h6>
-              <h6 className="sale-old-price">{`$${price.toFixed(2)}`}</h6>
+              <h6 className="sale-price">{priceSet(price).salePrice}</h6>
+              <h6 className="sale-old-price">{priceSet(price).regPrice}</h6>
             </div>
           ) : (
-            <h6>{`$${price.toFixed(2)}`}</h6>
+            <h6>{priceSet(price).regPrice}</h6>
           )}
         </div>
       </Link>

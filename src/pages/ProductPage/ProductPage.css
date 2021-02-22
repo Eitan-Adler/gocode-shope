@@ -1,0 +1,20 @@
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 1024px;
+}
+img {
+  width: 75%;
+  display: inline;
+}
+.info {
+  width: 50%;
+  display: inline;
+}
+.price {
+  font-size: x-large;
+  color: brown;
+}
+.sale-old-price {
+  color: #666;
+}

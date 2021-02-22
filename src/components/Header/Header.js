@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Slider } from "antd";
 
-const Header = ({ categories, changeFilterdBy }) => {
+const Header = ({ categories, changeFilterdBy, prices }) => {
   const [filterdBy, setFilterBy] = useState("All");
+  const [priceRange, setPriceRange] = useState([]);
+
   return (
     <nav className="product-filter">
       <h1>
@@ -11,6 +14,14 @@ const Header = ({ categories, changeFilterdBy }) => {
 
       <div className="sort">
         <div className="collection-sort">
+          <Slider
+            range
+            min={7}
+            max={1000}
+            defaultValue={priceRange}
+            onAfterChange={(value) => setPriceRange(value)}
+          />
+
           <label>Filter by:</label>
           <select
             onChange={(e) => {

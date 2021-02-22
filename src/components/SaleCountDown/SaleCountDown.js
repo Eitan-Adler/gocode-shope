@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SaleCountDown.css";
 import { PropTypes } from "prop-types";
 
-const saleDeadLine = Date.parse("2021-02-20 23:52:00:00");
+const saleDeadLine = Date.parse("2021-02-23 00:10:00:00");
 const SaleCountDown = ({ endSale }) => {
   const timeLeft = saleDeadLine - Date.parse(new Date());
   const [totalSec, setTotalSec] = useState(timeLeft / 1000);
